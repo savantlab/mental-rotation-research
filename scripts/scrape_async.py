@@ -12,12 +12,14 @@ import json
 import time
 from datetime import datetime, timedelta
 import random
+import secrets
 import os
 
 
 # Rate limiting settings
 CONCURRENT_REQUESTS = 3  # Number of concurrent requests (conservative)
-REQUEST_DELAY = 30  # Minimum seconds between requests (30s to be safe)
+REQUEST_DELAY_MIN = 30  # Minimum seconds between requests
+REQUEST_DELAY_MAX = 50  # Maximum seconds between requests (randomized)
 MAX_REQUESTS_PER_SESSION = 900  # Daily limit buffer
 SESSION_BREAK_HOURS = 24  # Hours to wait between sessions
 
@@ -36,7 +38,7 @@ class RateLimiter:
         await self.semaphore.acquire()
         
         async with self.lock:
-            # Ensure minimum delay between requests
+            # Ensure minimum delay between requests (randomized)
             now = time.time()
             time_since_last = now - self.last_request_time
             if time_since_last < self.delay:
@@ -243,7 +245,9 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
     print(f"Scraping year: {year}")
     print(f"{'='*70}")
     
-    rate_limiter = RateLimiter(max_concurrent=CONCURRENT_REQUESTS, delay=REQUEST_DELAY)
+    # Randomize delay between 30-50 seconds using cryptographically secure random
+    delay = REQUEST_DELAY_MIN + (secrets.randbelow(REQUEST_DELAY_MAX - REQUEST_DELAY_MIN + 1))
+    rate_limiter = RateLimiter(max_concurrent=CONCURRENT_REQUESTS, delay=delay)
     
     async with aiohttp.ClientSession() as session:
         # First, get total results from first page
@@ -251,9 +255,9 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
         total_results = await get_total_results(session, first_url, rate_limiter)
         
         if total_results:
-            # Calculate actual pages needed
-            pages_needed = min((total_results + 9) // 10, max_pages)  # Round up, cap at max
-            print(f"Total results: {total_results} → Need {pages_needed} pages")
+            # Calculate actual pages needed (Google Scholar limit: 999 results = 100 pages max)
+            pages_needed = min((total_results + 9) // 10, max_pages, 100)
+            print(f"Total results: {total_results} → Need {pages_needed} pages (max 100)")
         else:
             # Fallback to max_pages if we can't detect
             pages_needed = max_pages

@@ -22,7 +22,3 @@ A data science project for researching articles about mental rotation using Goog
    ```
 
 3. Explore the data in Jupyter notebooks
-
-## Research Topic
-
-Mental rotation - the ability to mentally manipulate two- and three-dimensional objects.

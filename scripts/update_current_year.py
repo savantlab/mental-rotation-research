@@ -117,8 +117,10 @@ async def scrape_page(session, url, page_num):
                     print(f"    Error parsing result {idx + 1}: {e}")
                     continue
         
-        # Delay between requests
-        await asyncio.sleep(30)  # 30 second delay
+        # Randomize delay between requests (30-50 seconds) using secure random
+        import secrets
+        delay = 30 + secrets.randbelow(21)  # 30 to 50 seconds
+        await asyncio.sleep(delay)
         
     except Exception as e:
         print(f"    Error fetching page {page_num + 1}: {e}")
@@ -179,8 +181,9 @@ async def scrape_current_year():
         total_results = await get_total_results(session, base_url)
         
         if total_results:
-            pages_needed = (total_results + 9) // 10
-            print(f"Found {total_results} results → {pages_needed} pages to scrape")
+            # Google Scholar limit: 999 results = 100 pages max
+            pages_needed = min((total_results + 9) // 10, 100)
+            print(f"Found {total_results} results → {pages_needed} pages to scrape (max 100)")
         else:
             print("Could not detect total, scraping first 10 pages")
             pages_needed = 10
