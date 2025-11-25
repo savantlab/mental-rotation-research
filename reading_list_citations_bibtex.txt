@@ -1,0 +1,77 @@
+@article{kay2024,
+  author = {L Kay, R Keogh, J Pearson},
+  title = {Slower but more accurate mental rotation performance in aphantasia linked to differences in cognitive strategies},
+  year = {2024},
+  url = {https://www.sciencedirect.com/science/article/pii/S1053810024000618}
+}
+
+@article{mj1989,
+  author = {MJ Farah},
+  title = {The neural basis of mental imagery},
+  year = {1989},
+  url = {https://www.cell.com/trends/neurosciences/abstract/0166-2236(89)90079-9}
+}
+
+@article{xu2015,
+  author = {Y Xu, SL Franconeri},
+  title = {Capacity for visual features in mental rotation},
+  year = {2015},
+  url = {https://journals.sagepub.com/doi/abs/10.1177/0956797615585002}
+}
+
+@article{bainbridge2021,
+  author = {WA Bainbridge, Z Pounder, AF Eardley, CI Baker},
+  title = {Quantifying aphantasia through drawing: Those without visual imagery show deficits in object but not spatial memory},
+  year = {2021},
+  url = {https://www.sciencedirect.com/science/article/pii/S0010945221003336}
+}
+
+@article{cabbai2024,
+  author = {G Cabbai, C Racey, J Simner, C Dance, J Ward, S Forster},
+  title = {Sensory representations in primary visual cortex are not sufficient for subjective imagery},
+  year = {2024},
+  url = {https://www.cell.com/current-biology/fulltext/S0960-9822(24)01264-8}
+}
+
+@article{wu2018,
+  author = {CC Wu, JM Wolfe},
+  title = {Comparing eye movements during position tracking and identity tracking: No evidence for separate systems},
+  year = {2018},
+  url = {https://link.springer.com/article/10.3758/s13414-017-1471-4}
+}
+
+@article{spagna2021,
+  author = {A Spagna, D Hajhajate, J Liu, P Bartolomeo},
+  title = {Visual mental imagery engages the left fusiform gyrus, but not the early visual cortex: A meta-analysis of neuroimaging evidence},
+  year = {2021},
+  url = {https://www.sciencedirect.com/science/article/pii/S014976342030784X}
+}
+
+@article{maechler2021,
+  author = {MR Maechler, P Cavanagh, PU Tse},
+  title = {Attentional tracking takes place over perceived rather than veridical positions},
+  year = {2021},
+  url = {https://link.springer.com/article/10.3758/s13414-021-02354-4}
+}
+
+@article{karakose-akbiyik2024,
+  author = {S Karakose-Akbiyik, TM Schubert, A Caramazza},
+  title = {Preserved recognition of basic visual features despite lack of awareness of shape: Evidence from a case of neglect},
+  year = {2024},
+  url = {https://www.sciencedirect.com/science/article/pii/S0010945224000012}
+}
+
+@article{shepard1971,
+  author = {RN Shepard, J Metzler},
+  title = {Mental rotation of three-dimensional objects},
+  year = {1971},
+  url = {https://www.science.org/doi/10.1126/science.171.3972.701}
+}
+
+@article{m2004,
+  author = {M Hegarty},
+  title = {Mechanical reasoning by mental simulation},
+  year = {2004},
+  url = {https://www.sciencedirect.com/science/article/pii/S1364661304000051}
+}
+

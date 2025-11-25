@@ -1,0 +1,8 @@
+scholarly
+pandas
+numpy
+matplotlib
+seaborn
+jupyter
+requests
+beautifulsoup4

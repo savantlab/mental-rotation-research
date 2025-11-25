@@ -1,0 +1,40 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Data files (too large for git)
+data/*.csv
+data/*.json
+data/*.html
+
+# Keep structure files
+!data/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Results (regeneratable)
+results/*.png
+results/*.pdf
+
+# Keep README files
+!**/README.md

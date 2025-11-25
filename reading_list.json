@@ -1,0 +1,248 @@
+{
+  "reading_list": [
+    {
+      "title": "Slower but more accurate mental rotation performance in aphantasia linked to differences in cognitive strategies",
+      "authors": "L Kay, R Keogh, J Pearson",
+      "year": "2024",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1053810024000618",
+      "citations": 41,
+      "tags": [
+        "aphantasia",
+        "cognitive strategies",
+        "most-cited"
+      ],
+      "notes": "Most cited paper in our 2024-2025 collection. Challenges use of mental rotation as standard imagery measure.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "L Kay, R Keogh, J Pearson (2024). Slower but more accurate mental rotation performance in aphantasia linked to differences in cognitive strategies.",
+        "chicago": "L Kay, R Keogh, J Pearson. \"Slower but more accurate mental rotation performance in aphantasia linked to differences in cognitive strategies.\" 2024.",
+        "bibtex": "@article{kay2024,\n  author = {L Kay, R Keogh, J Pearson},\n  title = {Slower but more accurate mental rotation performance in aphantasia linked to differences in cognitive strategies},\n  year = {2024},\n  url = {https://www.sciencedirect.com/science/article/pii/S1053810024000618}\n}",
+        "markdown": "**L Kay, R Keogh, J Pearson** (2024). [Slower but more accurate mental rotation performance in aphantasia linked to differences in cognitive strategies](https://www.sciencedirect.com/science/article/pii/S1053810024000618)."
+      }
+    },
+    {
+      "title": "The neural basis of mental imagery",
+      "authors": "MJ Farah",
+      "year": "1989",
+      "url": "https://www.cell.com/trends/neurosciences/abstract/0166-2236(89)90079-9",
+      "citations": "N/A (classic paper)",
+      "tags": [
+        "mental imagery",
+        "neural basis",
+        "classic",
+        "foundational"
+      ],
+      "notes": "Foundational 1989 paper on visual mental imagery. Discusses whether images are different from verbal thoughts, share mechanisms with visual perception, and use spatial representation. Shows imagery involves prestriate occipital cortex, parietal and temporal cortex.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "MJ Farah (1989). The neural basis of mental imagery.",
+        "chicago": "MJ Farah. \"The neural basis of mental imagery.\" 1989.",
+        "bibtex": "@article{mj1989,\n  author = {MJ Farah},\n  title = {The neural basis of mental imagery},\n  year = {1989},\n  url = {https://www.cell.com/trends/neurosciences/abstract/0166-2236(89)90079-9}\n}",
+        "markdown": "**MJ Farah** (1989). [The neural basis of mental imagery](https://www.cell.com/trends/neurosciences/abstract/0166-2236(89)90079-9)."
+      }
+    },
+    {
+      "title": "Capacity for visual features in mental rotation",
+      "authors": "Y Xu, SL Franconeri",
+      "year": "2015",
+      "url": "https://journals.sagepub.com/doi/abs/10.1177/0956797615585002",
+      "citations": 69,
+      "tags": [
+        "visual features",
+        "capacity limits",
+        "attention",
+        "eye-tracking"
+      ],
+      "notes": "Shows strikingly low capacity for mental rotation: only one feature can remain attached to one part. Features remain \"glued\" via singular focus of attention (typically on object top). Argues human visual system not suited for keeping multiple features attached during mental rotation. Important for understanding mental rotation mechanisms and science education.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "Y Xu, SL Franconeri (2015). Capacity for visual features in mental rotation.",
+        "chicago": "Y Xu, SL Franconeri. \"Capacity for visual features in mental rotation.\" 2015.",
+        "bibtex": "@article{xu2015,\n  author = {Y Xu, SL Franconeri},\n  title = {Capacity for visual features in mental rotation},\n  year = {2015},\n  url = {https://journals.sagepub.com/doi/abs/10.1177/0956797615585002}\n}",
+        "markdown": "**Y Xu, SL Franconeri** (2015). [Capacity for visual features in mental rotation](https://journals.sagepub.com/doi/abs/10.1177/0956797615585002)."
+      }
+    },
+    {
+      "title": "Quantifying aphantasia through drawing: Those without visual imagery show deficits in object but not spatial memory",
+      "authors": "WA Bainbridge, Z Pounder, AF Eardley, CI Baker",
+      "year": "2021",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0010945221003336",
+      "citations": 233,
+      "tags": [
+        "aphantasia",
+        "object memory",
+        "spatial memory",
+        "drawing",
+        "dissociation"
+      ],
+      "notes": "Large-scale study showing people with aphantasia have deficits in object memory but INTACT spatial memory. Used drawing tasks scored by 2,795 raters. Aphantasic participants recalled fewer objects, less color, more verbal scaffolding, BUT equivalent spatial accuracy and fewer errors. Provides evidence for separate memory systems for object vs spatial information. Important experimental validation of aphantasia.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "WA Bainbridge, Z Pounder, AF Eardley, CI Baker (2021). Quantifying aphantasia through drawing: Those without visual imagery show deficits in object but not spatial memory.",
+        "chicago": "WA Bainbridge, Z Pounder, AF Eardley, CI Baker. \"Quantifying aphantasia through drawing: Those without visual imagery show deficits in object but not spatial memory.\" 2021.",
+        "bibtex": "@article{bainbridge2021,\n  author = {WA Bainbridge, Z Pounder, AF Eardley, CI Baker},\n  title = {Quantifying aphantasia through drawing: Those without visual imagery show deficits in object but not spatial memory},\n  year = {2021},\n  url = {https://www.sciencedirect.com/science/article/pii/S0010945221003336}\n}",
+        "markdown": "**WA Bainbridge, Z Pounder, AF Eardley, CI Baker** (2021). [Quantifying aphantasia through drawing: Those without visual imagery show deficits in object but not spatial memory](https://www.sciencedirect.com/science/article/pii/S0010945221003336)."
+      }
+    },
+    {
+      "title": "Sensory representations in primary visual cortex are not sufficient for subjective imagery",
+      "authors": "G Cabbai, C Racey, J Simner, C Dance, J Ward, S Forster",
+      "year": "2024",
+      "url": "https://www.cell.com/current-biology/fulltext/S0960-9822(24)01264-8",
+      "citations": "Recent (2024)",
+      "tags": [
+        "aphantasia",
+        "V1",
+        "fMRI",
+        "neural dissociation",
+        "precuneus",
+        "subjective experience"
+      ],
+      "notes": "Critical fMRI study showing V1 sensory representations can be DISSOCIATED from subjective imagery experience. Aphantasics showed V1 decoding during passive listening (no reported imagery) but not during voluntary imagery. Visualizers showed V1 decoding for both, with precuneus involvement. Demonstrates that V1 activity alone is not sufficient for conscious imagery - precuneus appears key for subjective experience. Major theoretical contribution to understanding neural basis of imagery.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "G Cabbai, C Racey, J Simner, C Dance, J Ward, S Forster (2024). Sensory representations in primary visual cortex are not sufficient for subjective imagery.",
+        "chicago": "G Cabbai, C Racey, J Simner, C Dance, J Ward, S Forster. \"Sensory representations in primary visual cortex are not sufficient for subjective imagery.\" 2024.",
+        "bibtex": "@article{cabbai2024,\n  author = {G Cabbai, C Racey, J Simner, C Dance, J Ward, S Forster},\n  title = {Sensory representations in primary visual cortex are not sufficient for subjective imagery},\n  year = {2024},\n  url = {https://www.cell.com/current-biology/fulltext/S0960-9822(24)01264-8}\n}",
+        "markdown": "**G Cabbai, C Racey, J Simner, C Dance, J Ward, S Forster** (2024). [Sensory representations in primary visual cortex are not sufficient for subjective imagery](https://www.cell.com/current-biology/fulltext/S0960-9822(24)01264-8)."
+      }
+    },
+    {
+      "title": "Comparing eye movements during position tracking and identity tracking: No evidence for separate systems",
+      "authors": "CC Wu, JM Wolfe",
+      "year": "2018",
+      "url": "https://link.springer.com/article/10.3758/s13414-017-1471-4",
+      "citations": 14,
+      "tags": [
+        "eye-tracking",
+        "multiple object tracking",
+        "MOT",
+        "MIT",
+        "attention",
+        "visual tracking"
+      ],
+      "notes": "Eye movement study comparing position tracking (MOT) vs identity tracking (MIT) tasks. Found NO difference in eye movements between the two tasks when stimuli were identical. Challenges the idea of separate tracking systems. Shows observers can track either position or identity using the same eye-movement mechanisms. Important for understanding attention and tracking mechanisms, relevant for mental rotation eye-tracking studies.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "CC Wu, JM Wolfe (2018). Comparing eye movements during position tracking and identity tracking: No evidence for separate systems.",
+        "chicago": "CC Wu, JM Wolfe. \"Comparing eye movements during position tracking and identity tracking: No evidence for separate systems.\" 2018.",
+        "bibtex": "@article{wu2018,\n  author = {CC Wu, JM Wolfe},\n  title = {Comparing eye movements during position tracking and identity tracking: No evidence for separate systems},\n  year = {2018},\n  url = {https://link.springer.com/article/10.3758/s13414-017-1471-4}\n}",
+        "markdown": "**CC Wu, JM Wolfe** (2018). [Comparing eye movements during position tracking and identity tracking: No evidence for separate systems](https://link.springer.com/article/10.3758/s13414-017-1471-4)."
+      }
+    },
+    {
+      "title": "Visual mental imagery engages the left fusiform gyrus, but not the early visual cortex: A meta-analysis of neuroimaging evidence",
+      "authors": "A Spagna, D Hajhajate, J Liu, P Bartolomeo",
+      "year": "2021",
+      "url": "https://www.sciencedirect.com/science/article/pii/S014976342030784X",
+      "citations": 202,
+      "tags": [
+        "meta-analysis",
+        "fusiform gyrus",
+        "V1",
+        "fMRI",
+        "neural model",
+        "temporal lobe"
+      ],
+      "notes": "Major meta-analysis of 46 fMRI studies challenging dominant neural model. Shows visual mental imagery engages LEFT FUSIFORM GYRUS and fronto-parietal networks, but NO EVIDENCE for early visual cortex (V1) activity. Reconciles neuroimaging with patient lesion data - occipital damage spares imagery but temporal lobe damage impairs it. Proposes revised model: fronto-parietal networks modulate a core temporal network centered on fusiform imagery node. Critical theoretical paper - directly relevant to Cabbai et al. 2024 findings on V1 dissociation.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "A Spagna, D Hajhajate, J Liu, P Bartolomeo (2021). Visual mental imagery engages the left fusiform gyrus, but not the early visual cortex: A meta-analysis of neuroimaging evidence.",
+        "chicago": "A Spagna, D Hajhajate, J Liu, P Bartolomeo. \"Visual mental imagery engages the left fusiform gyrus, but not the early visual cortex: A meta-analysis of neuroimaging evidence.\" 2021.",
+        "bibtex": "@article{spagna2021,\n  author = {A Spagna, D Hajhajate, J Liu, P Bartolomeo},\n  title = {Visual mental imagery engages the left fusiform gyrus, but not the early visual cortex: A meta-analysis of neuroimaging evidence},\n  year = {2021},\n  url = {https://www.sciencedirect.com/science/article/pii/S014976342030784X}\n}",
+        "markdown": "**A Spagna, D Hajhajate, J Liu, P Bartolomeo** (2021). [Visual mental imagery engages the left fusiform gyrus, but not the early visual cortex: A meta-analysis of neuroimaging evidence](https://www.sciencedirect.com/science/article/pii/S014976342030784X)."
+      }
+    },
+    {
+      "title": "Attentional tracking takes place over perceived rather than veridical positions",
+      "authors": "MR Maechler, P Cavanagh, PU Tse",
+      "year": "2021",
+      "url": "https://link.springer.com/article/10.3758/s13414-021-02354-4",
+      "citations": 24,
+      "tags": [
+        "attention",
+        "object tracking",
+        "perception",
+        "visual illusions",
+        "position encoding"
+      ],
+      "notes": "Shows attention operates on PERCEIVED positions rather than veridical (physical) positions. Used motion illusion where Gabors with moving internal texture appear shifted. Tracking performance better when objects APPEAR further apart, even if physically same distance. Critical for understanding how attention and mental rotation work on perceptual representations, not raw retinal input. Complements Wu & Wolfe on tracking mechanisms.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "MR Maechler, P Cavanagh, PU Tse (2021). Attentional tracking takes place over perceived rather than veridical positions.",
+        "chicago": "MR Maechler, P Cavanagh, PU Tse. \"Attentional tracking takes place over perceived rather than veridical positions.\" 2021.",
+        "bibtex": "@article{maechler2021,\n  author = {MR Maechler, P Cavanagh, PU Tse},\n  title = {Attentional tracking takes place over perceived rather than veridical positions},\n  year = {2021},\n  url = {https://link.springer.com/article/10.3758/s13414-021-02354-4}\n}",
+        "markdown": "**MR Maechler, P Cavanagh, PU Tse** (2021). [Attentional tracking takes place over perceived rather than veridical positions](https://link.springer.com/article/10.3758/s13414-021-02354-4)."
+      }
+    },
+    {
+      "title": "Preserved recognition of basic visual features despite lack of awareness of shape: Evidence from a case of neglect",
+      "authors": "S Karakose-Akbiyik, TM Schubert, A Caramazza",
+      "year": "2024",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0010945224000012",
+      "citations": "Recent (2024)",
+      "tags": [
+        "neglect",
+        "attention",
+        "feature binding",
+        "shape",
+        "dissociation",
+        "patient study"
+      ],
+      "notes": "Neuropsychological case study (patient DH with spatial neglect) showing DISSOCIATION between shape awareness and basic feature processing. DH lacks awareness of left-side shapes but has INTACT recognition of color, orientation, and location of those same regions. Cannot recognize objects/faces/words but CAN report colors within their boundaries. Demonstrates spatial attention is critical for shape integration but NOT for basic feature detection. Shows features can be processed without conscious shape awareness - major theoretical implication for feature binding and attention.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "S Karakose-Akbiyik, TM Schubert, A Caramazza (2024). Preserved recognition of basic visual features despite lack of awareness of shape: Evidence from a case of neglect.",
+        "chicago": "S Karakose-Akbiyik, TM Schubert, A Caramazza. \"Preserved recognition of basic visual features despite lack of awareness of shape: Evidence from a case of neglect.\" 2024.",
+        "bibtex": "@article{karakose-akbiyik2024,\n  author = {S Karakose-Akbiyik, TM Schubert, A Caramazza},\n  title = {Preserved recognition of basic visual features despite lack of awareness of shape: Evidence from a case of neglect},\n  year = {2024},\n  url = {https://www.sciencedirect.com/science/article/pii/S0010945224000012}\n}",
+        "markdown": "**S Karakose-Akbiyik, TM Schubert, A Caramazza** (2024). [Preserved recognition of basic visual features despite lack of awareness of shape: Evidence from a case of neglect](https://www.sciencedirect.com/science/article/pii/S0010945224000012)."
+      }
+    },
+    {
+      "title": "Mental rotation of three-dimensional objects",
+      "authors": "RN Shepard, J Metzler",
+      "year": "1971",
+      "url": "https://www.science.org/doi/10.1126/science.171.3972.701",
+      "citations": 9361,
+      "tags": [
+        "classic",
+        "foundational",
+        "mental rotation",
+        "reaction time",
+        "analog representation",
+        "landmark"
+      ],
+      "notes": "THE seminal 1971 paper that launched mental rotation research. Showed reaction time is LINEAR function of angular difference between objects - suggesting analog mental rotation process. Found no difference between picture-plane vs depth rotations. Demonstrated mental rotation operates on 3D representations. Over 9,300 citations - one of most influential papers in cognitive psychology. Essential reference for ANY mental rotation research.",
+      "date_added": "2025-11-23",
+      "citations_formatted": {
+        "apa": "RN Shepard, J Metzler (1971). Mental rotation of three-dimensional objects.",
+        "chicago": "RN Shepard, J Metzler. \"Mental rotation of three-dimensional objects.\" 1971.",
+        "bibtex": "@article{shepard1971,\n  author = {RN Shepard, J Metzler},\n  title = {Mental rotation of three-dimensional objects},\n  year = {1971},\n  url = {https://www.science.org/doi/10.1126/science.171.3972.701}\n}",
+        "markdown": "**RN Shepard, J Metzler** (1971). [Mental rotation of three-dimensional objects](https://www.science.org/doi/10.1126/science.171.3972.701)."
+      }
+    },
+    {
+      "title": "Mechanical reasoning by mental simulation",
+      "authors": "M Hegarty",
+      "year": "2004",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1364661304000051",
+      "citations": 658,
+      "tags": [
+        "mental simulation",
+        "mechanical reasoning",
+        "spatial reasoning",
+        "STEM",
+        "kinematics",
+        "piecemeal animation"
+      ],
+      "notes": "Influential review on how people reason about mechanical systems through mental simulation. Argues for \"piecemeal\" animation model: people mentally animate components one-by-one rather than whole systems simultaneously. Shows individual differences in spatial ability predict mechanical reasoning. Discusses relationship between mental simulation, mental rotation, and external diagrams. Important for understanding spatial cognition in STEM contexts and science education. Connects mental rotation research to practical reasoning tasks.",
+      "date_added": "2025-11-25",
+      "citations_formatted": {
+        "apa": "M Hegarty (2004). Mechanical reasoning by mental simulation.",
+        "chicago": "M Hegarty. \"Mechanical reasoning by mental simulation.\" 2004.",
+        "bibtex": "@article{m2004,\n  author = {M Hegarty},\n  title = {Mechanical reasoning by mental simulation},\n  year = {2004},\n  url = {https://www.sciencedirect.com/science/article/pii/S1364661304000051}\n}",
+        "markdown": "**M Hegarty** (2004). [Mechanical reasoning by mental simulation](https://www.sciencedirect.com/science/article/pii/S1364661304000051)."
+      }
+    }
+  ]
+}
