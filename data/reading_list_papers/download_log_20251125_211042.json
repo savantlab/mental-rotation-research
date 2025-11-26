@@ -1,0 +1,103 @@
+[
+  {
+    "title": "Slower but more accurate mental rotation performance in aphantasia linked to differences in cognitive strategies",
+    "authors": "L Kay, R Keogh, J Pearson",
+    "year": "2024",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1053810024000618",
+    "filename": "2024_Slower but more accurate mental rotation performance in aphantasia linked to differences in cognitiv.html",
+    "file_type": "html",
+    "size_bytes": 146279,
+    "status": "success",
+    "downloaded_at": "2025-11-25T21:10:40.136789"
+  },
+  {
+    "title": "The neural basis of mental imagery",
+    "authors": "MJ Farah",
+    "year": "1989",
+    "url": "https://www.cell.com/trends/neurosciences/abstract/0166-2236(89)90079-9",
+    "status": "failed",
+    "error": "HTTP 403",
+    "downloaded_at": "2025-11-25T21:10:40.452586"
+  },
+  {
+    "title": "Capacity for visual features in mental rotation",
+    "authors": "Y Xu, SL Franconeri",
+    "year": "2015",
+    "url": "https://journals.sagepub.com/doi/abs/10.1177/0956797615585002",
+    "status": "failed",
+    "error": "HTTP 403",
+    "downloaded_at": "2025-11-25T21:10:40.520782"
+  },
+  {
+    "title": "Quantifying aphantasia through drawing: Those without visual imagery show deficits in object but not spatial memory",
+    "authors": "WA Bainbridge, Z Pounder, AF Eardley, CI Baker",
+    "year": "2021",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0010945221003336",
+    "status": "failed",
+    "error": "HTTP 404",
+    "downloaded_at": "2025-11-25T21:10:40.754398"
+  },
+  {
+    "title": "Sensory representations in primary visual cortex are not sufficient for subjective imagery",
+    "authors": "G Cabbai, C Racey, J Simner, C Dance, J Ward, S Forster",
+    "year": "2024",
+    "url": "https://www.cell.com/current-biology/fulltext/S0960-9822(24)01264-8",
+    "status": "failed",
+    "error": "HTTP 403",
+    "downloaded_at": "2025-11-25T21:10:40.873059"
+  },
+  {
+    "title": "Comparing eye movements during position tracking and identity tracking: No evidence for separate systems",
+    "authors": "CC Wu, JM Wolfe",
+    "year": "2018",
+    "url": "https://link.springer.com/article/10.3758/s13414-017-1471-4",
+    "status": "failed",
+    "error": "HTTP 404",
+    "downloaded_at": "2025-11-25T21:10:41.221973"
+  },
+  {
+    "title": "Visual mental imagery engages the left fusiform gyrus, but not the early visual cortex: A meta-analysis of neuroimaging evidence",
+    "authors": "A Spagna, D Hajhajate, J Liu, P Bartolomeo",
+    "year": "2021",
+    "url": "https://www.sciencedirect.com/science/article/pii/S014976342030784X",
+    "status": "failed",
+    "error": "HTTP 404",
+    "downloaded_at": "2025-11-25T21:10:41.428699"
+  },
+  {
+    "title": "Attentional tracking takes place over perceived rather than veridical positions",
+    "authors": "MR Maechler, P Cavanagh, PU Tse",
+    "year": "2021",
+    "url": "https://link.springer.com/article/10.3758/s13414-021-02354-4",
+    "status": "failed",
+    "error": "HTTP 404",
+    "downloaded_at": "2025-11-25T21:10:41.732079"
+  },
+  {
+    "title": "Preserved recognition of basic visual features despite lack of awareness of shape: Evidence from a case of neglect",
+    "authors": "S Karakose-Akbiyik, TM Schubert, A Caramazza",
+    "year": "2024",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0010945224000012",
+    "status": "failed",
+    "error": "HTTP 404",
+    "downloaded_at": "2025-11-25T21:10:42.051010"
+  },
+  {
+    "title": "Mental rotation of three-dimensional objects",
+    "authors": "RN Shepard, J Metzler",
+    "year": "1971",
+    "url": "https://www.science.org/doi/10.1126/science.171.3972.701",
+    "status": "failed",
+    "error": "HTTP 403",
+    "downloaded_at": "2025-11-25T21:10:42.149108"
+  },
+  {
+    "title": "Mechanical reasoning by mental simulation",
+    "authors": "M Hegarty",
+    "year": "2004",
+    "url": "https://www.sciencedirect.com/science/article/pii/S1364661304000051",
+    "status": "failed",
+    "error": "HTTP 404",
+    "downloaded_at": "2025-11-25T21:10:42.558057"
+  }
+]

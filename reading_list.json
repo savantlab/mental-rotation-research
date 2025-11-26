@@ -6,6 +6,7 @@
       "year": "2024",
       "url": "https://www.sciencedirect.com/science/article/pii/S1053810024000618",
       "citations": 41,
+      "paywall": false,
       "tags": [
         "aphantasia",
         "cognitive strategies",
@@ -26,6 +27,7 @@
       "year": "1989",
       "url": "https://www.cell.com/trends/neurosciences/abstract/0166-2236(89)90079-9",
       "citations": "N/A (classic paper)",
+      "paywall": true,
       "tags": [
         "mental imagery",
         "neural basis",
@@ -47,6 +49,7 @@
       "year": "2015",
       "url": "https://journals.sagepub.com/doi/abs/10.1177/0956797615585002",
       "citations": 69,
+      "paywall": true,
       "tags": [
         "visual features",
         "capacity limits",
@@ -68,6 +71,7 @@
       "year": "2021",
       "url": "https://www.sciencedirect.com/science/article/pii/S0010945221003336",
       "citations": 233,
+      "paywall": true,
       "tags": [
         "aphantasia",
         "object memory",
@@ -90,6 +94,7 @@
       "year": "2024",
       "url": "https://www.cell.com/current-biology/fulltext/S0960-9822(24)01264-8",
       "citations": "Recent (2024)",
+      "paywall": true,
       "tags": [
         "aphantasia",
         "V1",
@@ -113,6 +118,7 @@
       "year": "2018",
       "url": "https://link.springer.com/article/10.3758/s13414-017-1471-4",
       "citations": 14,
+      "paywall": true,
       "tags": [
         "eye-tracking",
         "multiple object tracking",
@@ -136,6 +142,7 @@
       "year": "2021",
       "url": "https://www.sciencedirect.com/science/article/pii/S014976342030784X",
       "citations": 202,
+      "paywall": true,
       "tags": [
         "meta-analysis",
         "fusiform gyrus",
@@ -159,6 +166,7 @@
       "year": "2021",
       "url": "https://link.springer.com/article/10.3758/s13414-021-02354-4",
       "citations": 24,
+      "paywall": true,
       "tags": [
         "attention",
         "object tracking",
@@ -181,6 +189,7 @@
       "year": "2024",
       "url": "https://www.sciencedirect.com/science/article/pii/S0010945224000012",
       "citations": "Recent (2024)",
+      "paywall": true,
       "tags": [
         "neglect",
         "attention",
@@ -204,6 +213,7 @@
       "year": "1971",
       "url": "https://www.science.org/doi/10.1126/science.171.3972.701",
       "citations": 9361,
+      "paywall": true,
       "tags": [
         "classic",
         "foundational",
@@ -227,6 +237,7 @@
       "year": "2004",
       "url": "https://www.sciencedirect.com/science/article/pii/S1364661304000051",
       "citations": 658,
+      "paywall": true,
       "tags": [
         "mental simulation",
         "mechanical reasoning",
