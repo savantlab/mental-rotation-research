@@ -27,25 +27,30 @@ SESSION_BREAK_HOURS = 24  # Hours to wait between sessions
 class RateLimiter:
     """Manages rate limiting for requests."""
     
-    def __init__(self, max_concurrent=5, delay=2):
+    def __init__(self, max_concurrent=5, delay_min=30, delay_max=50):
         self.semaphore = asyncio.Semaphore(max_concurrent)
-        self.delay = delay
+        self.delay_min = delay_min
+        self.delay_max = delay_max
         self.last_request_time = 0
         self.lock = asyncio.Lock()
         self.request_count = 0
     
     async def acquire(self):
-        """Acquire permission to make a request."""
+        """Acquire permission to make a request. Returns delay used in seconds."""
         await self.semaphore.acquire()
         
         async with self.lock:
-            # Ensure minimum delay between requests (randomized)
+            # Random delay between min and max for each request
+            delay = self.delay_min + secrets.randbelow(self.delay_max - self.delay_min + 1)
+            
+            # Ensure minimum delay between requests
             now = time.time()
             time_since_last = now - self.last_request_time
-            if time_since_last < self.delay:
-                await asyncio.sleep(self.delay - time_since_last)
+            if time_since_last < delay:
+                await asyncio.sleep(delay - time_since_last)
             self.last_request_time = time.time()
             self.request_count += 1
+            return delay
     
     def release(self):
         """Release the semaphore."""
@@ -74,7 +79,9 @@ async def scrape_single_page(session, url, page_num, rate_limiter, extract_total
         'Accept-Language': 'en-US,en;q=0.9',
     }
     
-    await rate_limiter.acquire()
+    # Acquire rate limiter and show delay
+    delay_used = await rate_limiter.acquire()
+    print(f"  Page {page_num + 1}: waiting {delay_used}s...")
     
     try:
         async with session.get(url, headers=headers, timeout=10) as response:
@@ -183,6 +190,8 @@ async def scrape_single_page(session, url, page_num, rate_limiter, extract_total
                 except Exception as e:
                     print(f"    Error parsing result {idx + 1} on page {page_num + 1}: {e}")
                     continue
+        
+        print(f"  Page {page_num + 1}: found {len(articles)} articles")
     
     except asyncio.TimeoutError:
         print(f"    Page {page_num + 1}: Timeout")
@@ -269,9 +278,12 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
     print(f"Scraping year: {year}")
     print(f"{'='*70}")
     
-    # Randomize delay between 30-50 seconds using cryptographically secure random
-    delay = REQUEST_DELAY_MIN + (secrets.randbelow(REQUEST_DELAY_MAX - REQUEST_DELAY_MIN + 1))
-    rate_limiter = RateLimiter(max_concurrent=CONCURRENT_REQUESTS, delay=delay)
+    # Create rate limiter with random delays between 30-50 seconds per request
+    rate_limiter = RateLimiter(
+        max_concurrent=CONCURRENT_REQUESTS,
+        delay_min=REQUEST_DELAY_MIN,
+        delay_max=REQUEST_DELAY_MAX
+    )
     
     async with aiohttp.ClientSession() as session:
         # First, scrape page 1 and extract total results
@@ -297,7 +309,7 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
         
         # Execute remaining tasks concurrently
         if tasks:
-            print(f"Launching {len(tasks)} concurrent page requests...")
+            print(f"Scraping pages 2-{pages_needed} ({len(tasks)} pages)...")
             results = await asyncio.gather(*tasks)
         else:
             results = []
@@ -400,7 +412,6 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
     print("Async Google Scholar Scraper")
     print(f"Years: {start_year} to {end_year}")
     print(f"Requests per session: {max_requests_per_session}")
-    print(f"Concurrent requests: {CONCURRENT_REQUESTS}")
     print("="*70)
     
     if completed_years:
