@@ -261,21 +261,29 @@ async def get_total_results(session, url, rate_limiter):
         rate_limiter.release()
 
 
-async def scrape_year_async(year, base_url_template, max_pages=100, progress_callback=None, articles_by_year=None):
+async def scrape_year_async(year_range, base_url_template, max_pages=100, progress_callback=None, articles_by_year=None):
     """
-    Scrape all articles for a specific year using async requests.
+    Scrape all articles for a specific year range using async requests.
     Automatically detects total results and only scrapes necessary pages.
     
     Args:
-        year: The year to scrape
-        base_url_template: URL template with {year} placeholder
+        year_range: Tuple of (start_year, end_year) or single year
+        base_url_template: URL template with {year_start} and {year_end} placeholders
         max_pages: Maximum pages per year (safety limit)
         
     Returns:
         Tuple of (articles list, request count, first page articles for incremental save)
     """
+    # Handle both single year and year range
+    if isinstance(year_range, tuple):
+        year_start, year_end = year_range
+        year_label = f"{year_start}-{year_end}"
+    else:
+        year_start = year_end = year_range
+        year_label = str(year_range)
+    
     print(f"\n{'='*70}")
-    print(f"Scraping year: {year}")
+    print(f"Scraping years: {year_label}")
     print(f"{'='*70}")
     
     # Create rate limiter with random delays between 30-50 seconds per request
@@ -287,7 +295,7 @@ async def scrape_year_async(year, base_url_template, max_pages=100, progress_cal
     
     async with aiohttp.ClientSession() as session:
         # First, scrape page 1 and extract total results
-        first_url = base_url_template.format(year=year)
+        first_url = base_url_template.format(year_start=year_start, year_end=year_end)
         first_page_articles, total_results = await scrape_single_page(session, first_url, 0, rate_limiter, extract_total=True)
         
         if total_results:
@@ -305,7 +313,7 @@ async def scrape_year_async(year, base_url_template, max_pages=100, progress_cal
             print(f"Scraping pages 2-{pages_needed} ({pages_needed - 1} pages)...")
             for page in range(1, pages_needed):
                 start = page * 10
-                url = f"{base_url_template.format(year=year)}&start={start}"
+                url = f"{base_url_template.format(year_start=year_start, year_end=year_end)}&start={start}"
                 
                 # Execute page scrape
                 page_result = await scrape_single_page(session, url, page, rate_limiter)
@@ -428,13 +436,15 @@ def save_final_results(articles_by_year, total_count):
 async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_per_session=900):
     """
     Continuously scrape with async requests and automatic breaks.
+    Uses decade ranges for better results (1970-1979, 1980-1989, etc.)
     
     Args:
         start_year: First year to scrape
         end_year: Last year to scrape
         max_requests_per_session: Max requests per session (default: 900)
     """
-    base_url = 'https://scholar.google.com/scholar?as_ylo={year}&as_yhi={year}&q=%22mental+rotation%22&hl=en&as_sdt=0,47&as_vis=1'
+    # URL format: decade ranges (as_ylo to as_yhi)
+    base_url = 'https://scholar.google.com/scholar?as_ylo={year_start}&as_yhi={year_end}&q=%22mental+rotation%22&hl=en&as_sdt=0,47&as_vis=1&scisbd=1'
     
     # Load existing progress
     completed_years, existing_articles = load_progress()
@@ -462,19 +472,30 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
     total_articles = len(existing_articles)
     session_number = 1
     
-    # Continue from where we left off (chronologically forward)
-    years_to_scrape = [y for y in range(start_year, end_year + 1) if y not in completed_years]
+    # Create decade ranges (1970-1979, 1980-1989, ..., 2020-2025)
+    decade_ranges = []
+    for decade_start in range(start_year, end_year, 10):
+        decade_end = min(decade_start + 9, end_year)
+        decade_ranges.append((decade_start, decade_end))
     
-    while years_to_scrape:
+    # Keep track of completed ranges
+    completed_ranges = []
+    if completed_years:
+        # Mark single years (2024, 2025) as needing different handling
+        decade_ranges = [(s, e) for s, e in decade_ranges if not all(y in completed_years for y in range(s, e+1))]
+    
+    ranges_to_scrape = decade_ranges
+    
+    while ranges_to_scrape:
         print(f"\n{'#'*70}")
         print(f"SESSION {session_number}")
-        print(f"Years remaining: {len(years_to_scrape)}")
+        print(f"Decade ranges remaining: {len(ranges_to_scrape)}")
         print(f"{'#'*70}")
         
         request_count = 0
         session_start_time = datetime.now()
         
-        for year in years_to_scrape[:]:
+        for year_range in ranges_to_scrape[:]:
             # Check if we're approaching the limit (leave 100 request buffer)
             if request_count >= max_requests_per_session:
                 print(f"\n{'='*70}")
@@ -498,9 +519,9 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
                 def save_page_progress(articles_dict):
                     save_progress(articles_dict, sum(len(arts) for arts in articles_dict.values()))
                 
-                # Scrape year asynchronously with page-level progress saving
+                # Scrape decade range asynchronously with page-level progress saving
                 articles, requests, _ = await scrape_year_async(
-                    year, 
+                    year_range, 
                     base_url, 
                     progress_callback=save_page_progress,
                     articles_by_year=articles_by_year
@@ -519,9 +540,11 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
                 if duplicates_found > 0:
                     print(f"  ⚠ Removed {duplicates_found} duplicate(s) based on URL")
                 
-                articles_by_year[year] = unique_articles
+                # Store by range label
+                range_label = f"{year_range[0]}-{year_range[1]}" if isinstance(year_range, tuple) else str(year_range)
+                articles_by_year[range_label] = unique_articles
                 total_articles += len(unique_articles)
-                years_to_scrape.remove(year)
+                ranges_to_scrape.remove(year_range)
                 
                 # Track actual requests made
                 request_count += requests
@@ -542,9 +565,9 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
                 continue
         
         # Check if done
-        if not years_to_scrape:
+        if not ranges_to_scrape:
             print(f"\n{'#'*70}")
-            print(f"ALL YEARS COMPLETE!")
+            print(f"ALL RANGES COMPLETE!")
             print(f"{'#'*70}")
             save_final_results(articles_by_year, total_articles)
             break
@@ -560,7 +583,7 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
         print(f"Session duration: {session_duration}")
         print(f"Resume time: {resume_time.strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"Waiting {SESSION_BREAK_HOURS} hours...")
-        print(f"Years remaining: {len(years_to_scrape)}")
+        print(f"Ranges remaining: {len(ranges_to_scrape)}")
         print(f"{'='*70}")
         
         await asyncio.sleep(SESSION_BREAK_HOURS * 3600)
