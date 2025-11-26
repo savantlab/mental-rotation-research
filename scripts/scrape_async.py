@@ -32,6 +32,7 @@ class RateLimiter:
         self.delay = delay
         self.last_request_time = 0
         self.lock = asyncio.Lock()
+        self.request_count = 0
     
     async def acquire(self):
         """Acquire permission to make a request."""
@@ -44,13 +45,14 @@ class RateLimiter:
             if time_since_last < self.delay:
                 await asyncio.sleep(self.delay - time_since_last)
             self.last_request_time = time.time()
+            self.request_count += 1
     
     def release(self):
         """Release the semaphore."""
         self.semaphore.release()
 
 
-async def scrape_single_page(session, url, page_num, rate_limiter):
+async def scrape_single_page(session, url, page_num, rate_limiter, extract_total=False):
     """
     Scrape a single page asynchronously.
     
@@ -59,9 +61,10 @@ async def scrape_single_page(session, url, page_num, rate_limiter):
         url: URL to scrape
         page_num: Page number (0-indexed)
         rate_limiter: RateLimiter instance
+        extract_total: If True, also extract total results count from page
         
     Returns:
-        List of article dictionaries
+        List of article dictionaries, or tuple of (articles, total_results) if extract_total=True
     """
     articles = []
     
@@ -83,6 +86,25 @@ async def scrape_single_page(session, url, page_num, rate_limiter):
             html = await response.text()
             
             soup = BeautifulSoup(html, 'html.parser')
+            
+            # Extract total results if requested
+            total_results = None
+            if extract_total:
+                import re
+                # Look for "Page X of Y results"
+                for div in soup.find_all('div'):
+                    text = div.get_text()
+                    match = re.search(r'Page\s+\d+\s+of\s+(\d+)\s+results?', text, re.IGNORECASE)
+                    if match:
+                        total_results = int(match.group(1))
+                        break
+                
+                # Fallback: "About X results"
+                if not total_results:
+                    match = re.search(r'About\s+([\d,]+)\s+results?', html, re.IGNORECASE)
+                    if match:
+                        total_results = int(match.group(1).replace(',', ''))
+            
             results = soup.find_all('div', class_='gs_ri')
             
             if not results:
@@ -169,6 +191,8 @@ async def scrape_single_page(session, url, page_num, rate_limiter):
     finally:
         rate_limiter.release()
     
+    if extract_total:
+        return articles, total_results
     return articles
 
 
@@ -239,7 +263,7 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
         max_pages: Maximum pages per year (safety limit)
         
     Returns:
-        List of articles for this year
+        Tuple of (articles list, request count)
     """
     print(f"\n{'='*70}")
     print(f"Scraping year: {year}")
@@ -250,9 +274,9 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
     rate_limiter = RateLimiter(max_concurrent=CONCURRENT_REQUESTS, delay=delay)
     
     async with aiohttp.ClientSession() as session:
-        # First, get total results from first page
+        # First, scrape page 1 and extract total results
         first_url = base_url_template.format(year=year)
-        total_results = await get_total_results(session, first_url, rate_limiter)
+        first_page_articles, total_results = await scrape_single_page(session, first_url, 0, rate_limiter, extract_total=True)
         
         if total_results:
             # Calculate actual pages needed (Google Scholar limit: 999 results = 100 pages max)
@@ -263,30 +287,29 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
             pages_needed = max_pages
             print(f"Could not detect total results, using max pages: {max_pages}")
         
-        # Create tasks for all pages
+        # Create tasks for remaining pages (starting from page 2)
         tasks = []
-        for page in range(pages_needed):
+        for page in range(1, pages_needed):
             start = page * 10
-            
-            if start == 0:
-                url = base_url_template.format(year=year)
-            else:
-                url = f"{base_url_template.format(year=year)}&start={start}"
-            
+            url = f"{base_url_template.format(year=year)}&start={start}"
             task = scrape_single_page(session, url, page, rate_limiter)
             tasks.append(task)
         
-        # Execute all tasks concurrently
-        print(f"Launching {len(tasks)} concurrent page requests...")
-        results = await asyncio.gather(*tasks)
+        # Execute remaining tasks concurrently
+        if tasks:
+            print(f"Launching {len(tasks)} concurrent page requests...")
+            results = await asyncio.gather(*tasks)
+        else:
+            results = []
         
-        # Flatten results
-        year_articles = []
+        # Flatten results (include first page articles)
+        year_articles = first_page_articles[:]
         for page_articles in results:
             year_articles.extend(page_articles)
         
-        print(f"\nYear {year} complete: {len(year_articles)} articles collected")
-        return year_articles
+        requests_made = rate_limiter.request_count
+        print(f"\nYear {year} complete: {len(year_articles)} articles collected ({requests_made} requests)")
+        return year_articles, requests_made
 
 
 def load_progress():
@@ -410,6 +433,7 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
         session_start_time = datetime.now()
         
         for year in years_to_scrape[:]:
+            # Check if we're approaching the limit (leave 100 request buffer)
             if request_count >= max_requests_per_session:
                 print(f"\n{'='*70}")
                 print(f"SESSION {session_number} COMPLETE")
@@ -417,18 +441,29 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
                 print(f"{'='*70}")
                 break
             
+            # Check if we have enough headroom (at least 100 requests left for safety)
+            remaining = max_requests_per_session - request_count
+            if remaining < 100:
+                print(f"\n{'='*70}")
+                print(f"SESSION {session_number} COMPLETE (Safety Buffer)")
+                print(f"Requests made: {request_count}/{max_requests_per_session}")
+                print(f"Remaining: {remaining} (< 100 safety threshold)")
+                print(f"{'='*70}")
+                break
+            
             try:
                 # Scrape year asynchronously
-                articles = await scrape_year_async(year, base_url)
+                articles, requests = await scrape_year_async(year, base_url)
                 articles_by_year[year] = articles
                 total_articles += len(articles)
                 years_to_scrape.remove(year)
                 
-                # Estimate requests made (pages scraped)
-                request_count += min(100, (len(articles) // 10) + 1)
+                # Track actual requests made
+                request_count += requests
+                remaining = max_requests_per_session - request_count
                 
-                print(f"Total requests this session: ~{request_count}/{max_requests_per_session}")
-                print(f"Total articles (all time): {total_articles}")
+                print(f"✓ Total requests this session: {request_count}/{max_requests_per_session} ({remaining} remaining)")
+                print(f"✓ Total articles (all time): {total_articles}")
                 
                 # Save progress
                 save_progress(articles_by_year, total_articles)
