@@ -18,7 +18,10 @@ A data science project for researching articles about mental rotation using Goog
 
 2. Run the data collection script:
    ```bash
-   python scripts/collect_articles.py
+   python scripts/scrape_async.py
    ```
 
-3. Explore the data in Jupyter notebooks
+3. Start Jupyter for analysis:
+   ```bash
+   jupyter notebook
+   ```
