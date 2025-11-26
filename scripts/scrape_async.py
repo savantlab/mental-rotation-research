@@ -325,12 +325,36 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
 
 
 def load_progress():
-    """Load progress from file if it exists."""
+    """Load progress from file if it exists, or from latest completed dataset."""
     progress_file = 'data/scraping_progress.json'
+    
+    # First check for progress file
     if os.path.exists(progress_file):
         with open(progress_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
+            print(f"\n📂 Loaded progress file: {len(data.get('articles', []))} articles, {len(data.get('years_completed', []))} years")
             return data.get('years_completed', []), data.get('articles', [])
+    
+    # If no progress file, check for most recent complete dataset
+    import glob
+    complete_files = glob.glob('data/mental_rotation_complete_*.json')
+    if complete_files:
+        # Get most recent file
+        latest_file = max(complete_files, key=os.path.getmtime)
+        print(f"\n📂 Found existing dataset: {os.path.basename(latest_file)}")
+        print(f"   Loading to avoid re-scraping...")
+        
+        with open(latest_file, 'r', encoding='utf-8') as f:
+            articles = json.load(f)
+        
+        # Extract years from articles
+        years_completed = sorted(set(a.get('search_year') for a in articles if a.get('search_year')))
+        
+        print(f"   ✓ Loaded {len(articles)} articles")
+        print(f"   ✓ Years already scraped: {years_completed}")
+        
+        return years_completed, articles
+    
     return [], []
 
 
