@@ -172,5 +172,83 @@ async def scrape_reading_list():
     print(f"Papers saved to: {output_dir}")
 
 
+async def scrape_single_paper(paper_index=None, paper_url=None):
+    """Scrape a single paper by index or URL."""
+    
+    # Load reading list
+    reading_list_path = Path('reading_list.json')
+    if not reading_list_path.exists():
+        print(f"✗ Error: {reading_list_path} not found")
+        return
+    
+    with open(reading_list_path, 'r') as f:
+        data = json.load(f)
+    
+    papers = data['reading_list']
+    
+    # Find paper to scrape
+    if paper_index is not None:
+        if 0 <= paper_index < len(papers):
+            paper = papers[paper_index]
+        else:
+            print(f"✗ Invalid index: {paper_index}")
+            return
+    elif paper_url is not None:
+        paper = next((p for p in papers if p['url'] == paper_url), None)
+        if not paper:
+            print(f"✗ Paper not found with URL: {paper_url}")
+            return
+    else:
+        print("✗ Must provide paper_index or paper_url")
+        return
+    
+    print(f"Scraping single paper (index {papers.index(paper)}): {paper['title'][:50]}...")
+    
+    # Create output directory
+    output_dir = Path('data/reading_list_papers')
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Download paper
+    async with aiohttp.ClientSession() as session:
+        result = await download_paper(session, paper, output_dir)
+    
+    # Save result
+    results_file = output_dir / f"download_log_single_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    with open(results_file, 'w') as f:
+        json.dump([result], f, indent=2)
+    
+    # Summary
+    print(f"\n{'='*70}")
+    if result['status'] == 'success':
+        print(f"✓ Successfully downloaded: {result['filename']}")
+    else:
+        print(f"✗ Failed to download: {result['error']}")
+    print(f"Log saved to: {results_file}")
+    print(f"{'='*70}")
+    
+    return result
+
+
 if __name__ == '__main__':
-    asyncio.run(scrape_reading_list())
+    import sys
+    
+    if len(sys.argv) > 1:
+        if sys.argv[1] == 'single':
+            if len(sys.argv) > 2:
+                # Single paper by index
+                paper_index = int(sys.argv[2])
+                asyncio.run(scrape_single_paper(paper_index=paper_index))
+            else:
+                print("Usage: python scrape_reading_list.py single <index>")
+        elif sys.argv[1] == 'url':
+            if len(sys.argv) > 2:
+                # Single paper by URL
+                paper_url = sys.argv[2]
+                asyncio.run(scrape_single_paper(paper_url=paper_url))
+            else:
+                print("Usage: python scrape_reading_list.py url <url>")
+        else:
+            print("Unknown command. Use 'single <index>' or 'url <url>' or run without args for all papers.")
+    else:
+        # Scrape all papers
+        asyncio.run(scrape_reading_list())

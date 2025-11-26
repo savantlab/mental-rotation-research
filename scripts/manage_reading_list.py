@@ -55,14 +55,14 @@ def add_article(title, authors, url, year=None, citations=None, tags=None, notes
     save_reading_list(data)
     print(f"✓ Added to reading list: {title}")
     
-    # Auto-download the new paper
+    # Auto-download the new paper (by URL)
     if auto_download:
         print("\n" + "="*70)
         print("AUTO-DOWNLOADING NEW PAPER")
         print("="*70)
         try:
             result = subprocess.run(
-                ['python3', 'scripts/scrape_reading_list.py'],
+                ['python3', 'scripts/scrape_reading_list.py', 'url', url],
                 cwd=Path.cwd(),
                 capture_output=False,
                 text=True
@@ -73,7 +73,7 @@ def add_article(title, authors, url, year=None, citations=None, tags=None, notes
                 print(f"\n⚠ Download script exited with code {result.returncode}")
         except Exception as e:
             print(f"\n⚠ Could not auto-download: {e}")
-            print("Run manually: python3 scripts/scrape_reading_list.py")
+            print(f"Run manually: python3 scripts/scrape_reading_list.py url {url}")
 
 
 def list_articles(tag_filter=None):
