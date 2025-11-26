@@ -431,8 +431,8 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
     total_articles = len(existing_articles)
     session_number = 1
     
-    # Continue from where we left off
-    years_to_scrape = [y for y in range(end_year, start_year - 1, -1) if y not in completed_years]
+    # Continue from where we left off (chronologically forward)
+    years_to_scrape = [y for y in range(start_year, end_year + 1) if y not in completed_years]
     
     while years_to_scrape:
         print(f"\n{'#'*70}")
