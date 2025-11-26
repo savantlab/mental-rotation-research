@@ -404,6 +404,24 @@ def save_final_results(articles_by_year, total_count):
             article['search_year'] = year
             all_articles.append(article)
     
+    # Final deduplication by URL
+    seen_urls = set()
+    unique_articles = []
+    duplicates_removed = 0
+    
+    for article in all_articles:
+        url = article.get('url')
+        if url and url not in seen_urls:
+            seen_urls.add(url)
+            unique_articles.append(article)
+        else:
+            duplicates_removed += 1
+    
+    if duplicates_removed > 0:
+        print(f"\n⚠ Removed {duplicates_removed} duplicate(s) in final deduplication")
+    
+    all_articles = unique_articles
+    
     if not all_articles:
         print("No articles to save.")
         return
