@@ -452,6 +452,83 @@ def save_final_results(articles_by_year, total_count):
         os.remove('data/scraping_progress.json')
 
 
+async def calculate_year_ranges(start_year, end_year, max_results_per_range=800):
+    """
+    Calculate optimal year ranges by querying each year's result count.
+    Groups years together until reaching max_results_per_range.
+    
+    Args:
+        start_year: First year
+        end_year: Last year
+        max_results_per_range: Max results to group into one range
+        
+    Returns:
+        List of (start_year, end_year) tuples
+    """
+    print(f"\n{'='*70}")
+    print("CALCULATING OPTIMAL YEAR RANGES")
+    print(f"{'='*70}")
+    
+    base_url = 'https://scholar.google.com/scholar?as_ylo={year}&as_yhi={year}&q=%22mental+rotation%22&hl=en&as_sdt=0,47&as_vis=1&scisbd=1'
+    rate_limiter = RateLimiter(max_concurrent=1, delay_min=5, delay_max=10)  # Fast queries
+    
+    year_counts = {}
+    
+    async with aiohttp.ClientSession() as session:
+        for year in range(start_year, end_year + 1):
+            url = base_url.format(year=year)
+            total = await get_total_results(session, url, rate_limiter)
+            year_counts[year] = total if total else 0
+            print(f"  {year}: {year_counts[year]} results")
+    
+    # Group years into ranges
+    ranges = []
+    current_start = start_year
+    current_total = 0
+    
+    for year in range(start_year, end_year + 1):
+        year_count = year_counts[year]
+        
+        if current_total + year_count > max_results_per_range and current_total > 0:
+            # Start new range
+            ranges.append((current_start, year - 1))
+            current_start = year
+            current_total = year_count
+        else:
+            current_total += year_count
+    
+    # Add final range
+    if current_start <= end_year:
+        ranges.append((current_start, end_year))
+    
+    print(f"\n{'='*70}")
+    print(f"Created {len(ranges)} optimal ranges:")
+    for start, end in ranges:
+        total = sum(year_counts[y] for y in range(start, end + 1))
+        print(f"  {start}-{end}: ~{total} results (calculated)")
+    print(f"{'='*70}\n")
+    
+    # Verify ranges by querying the actual range
+    print("Verifying ranges with actual queries...")
+    range_url = 'https://scholar.google.com/scholar?as_ylo={year_start}&as_yhi={year_end}&q=%22mental+rotation%22&hl=en&as_sdt=0,47&as_vis=1&scisbd=1'
+    
+    async with aiohttp.ClientSession() as session:
+        for start, end in ranges:
+            url = range_url.format(year_start=start, year_end=end)
+            actual_total = await get_total_results(session, url, rate_limiter)
+            calculated_total = sum(year_counts[y] for y in range(start, end + 1))
+            
+            if actual_total:
+                diff = abs(actual_total - calculated_total)
+                status = "✓" if diff < 50 else "⚠"
+                print(f"  {status} {start}-{end}: {actual_total} actual vs {calculated_total} calculated (diff: {diff})")
+            else:
+                print(f"  ⚠ {start}-{end}: Could not verify")
+    
+    print()
+    return ranges
+
+
 async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_per_session=900):
     """
     Continuously scrape with async requests and automatic breaks.
@@ -491,19 +568,16 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
     total_articles = len(existing_articles)
     session_number = 1
     
-    # Create decade ranges (1970-1979, 1980-1989, ..., 2020-2025)
-    decade_ranges = []
-    for decade_start in range(start_year, end_year, 10):
-        decade_end = min(decade_start + 9, end_year)
-        decade_ranges.append((decade_start, decade_end))
+    # Calculate optimal year ranges based on result counts
+    print("\nCalculating optimal year ranges...")
+    all_ranges = await calculate_year_ranges(start_year, end_year, max_results_per_range=800)
     
-    # Keep track of completed ranges
-    completed_ranges = []
+    # Filter out completed ranges
     if completed_years:
-        # Mark single years (2024, 2025) as needing different handling
-        decade_ranges = [(s, e) for s, e in decade_ranges if not all(y in completed_years for y in range(s, e+1))]
-    
-    ranges_to_scrape = decade_ranges
+        ranges_to_scrape = [(s, e) for s, e in all_ranges if not all(y in completed_years for y in range(s, e+1))]
+        print(f"Skipping {len(all_ranges) - len(ranges_to_scrape)} completed range(s)")
+    else:
+        ranges_to_scrape = all_ranges
     
     while ranges_to_scrape:
         print(f"\n{'#'*70}")
