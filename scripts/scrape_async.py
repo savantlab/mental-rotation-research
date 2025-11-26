@@ -17,7 +17,7 @@ import os
 
 
 # Rate limiting settings
-CONCURRENT_REQUESTS = 3  # Number of concurrent requests (conservative)
+MAX_PARALLEL_REQUESTS = 3  # Number of parallel requests (conservative)
 REQUEST_DELAY_MIN = 30  # Minimum seconds between requests
 REQUEST_DELAY_MAX = 50  # Maximum seconds between requests (randomized)
 MAX_REQUESTS_PER_SESSION = 900  # Daily limit buffer
@@ -280,7 +280,7 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
     
     # Create rate limiter with random delays between 30-50 seconds per request
     rate_limiter = RateLimiter(
-        max_concurrent=CONCURRENT_REQUESTS,
+        max_concurrent=MAX_PARALLEL_REQUESTS,
         delay_min=REQUEST_DELAY_MIN,
         delay_max=REQUEST_DELAY_MAX
     )
@@ -489,8 +489,22 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
             try:
                 # Scrape year asynchronously
                 articles, requests = await scrape_year_async(year, base_url)
-                articles_by_year[year] = articles
-                total_articles += len(articles)
+                
+                # Deduplicate by URL across all existing articles
+                existing_urls = set()
+                for existing_articles in articles_by_year.values():
+                    for a in existing_articles:
+                        existing_urls.add(a.get('url'))
+                
+                # Filter out duplicates
+                unique_articles = [a for a in articles if a.get('url') not in existing_urls]
+                duplicates_found = len(articles) - len(unique_articles)
+                
+                if duplicates_found > 0:
+                    print(f"  ⚠ Removed {duplicates_found} duplicate(s) based on URL")
+                
+                articles_by_year[year] = unique_articles
+                total_articles += len(unique_articles)
                 years_to_scrape.remove(year)
                 
                 # Track actual requests made
