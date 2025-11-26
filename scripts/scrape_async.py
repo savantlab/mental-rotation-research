@@ -261,7 +261,7 @@ async def get_total_results(session, url, rate_limiter):
         rate_limiter.release()
 
 
-async def scrape_year_async(year, base_url_template, max_pages=100):
+async def scrape_year_async(year, base_url_template, max_pages=100, progress_callback=None, articles_by_year=None):
     """
     Scrape all articles for a specific year using async requests.
     Automatically detects total results and only scrapes necessary pages.
@@ -272,7 +272,7 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
         max_pages: Maximum pages per year (safety limit)
         
     Returns:
-        Tuple of (articles list, request count)
+        Tuple of (articles list, request count, first page articles for incremental save)
     """
     print(f"\n{'='*70}")
     print(f"Scraping year: {year}")
@@ -307,10 +307,22 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
             task = scrape_single_page(session, url, page, rate_limiter)
             tasks.append(task)
         
-        # Execute remaining tasks concurrently
+        # Execute pages sequentially to save progress after each
+        results = []
         if tasks:
             print(f"Scraping pages 2-{pages_needed} ({len(tasks)} pages)...")
-            results = await asyncio.gather(*tasks)
+            for i, task in enumerate(tasks, start=2):
+                page_result = await task
+                results.append(page_result)
+                
+                # Save progress after each page if callback provided
+                if progress_callback and articles_by_year is not None:
+                    # Update current year's articles
+                    current_articles = first_page_articles[:]
+                    for r in results:
+                        current_articles.extend(r)
+                    articles_by_year[year] = current_articles
+                    progress_callback(articles_by_year)
         else:
             results = []
         
@@ -321,7 +333,7 @@ async def scrape_year_async(year, base_url_template, max_pages=100):
         
         requests_made = rate_limiter.request_count
         print(f"\nYear {year} complete: {len(year_articles)} articles collected ({requests_made} requests)")
-        return year_articles, requests_made
+        return year_articles, requests_made, first_page_articles
 
 
 def load_progress():
@@ -487,8 +499,17 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
                 break
             
             try:
-                # Scrape year asynchronously
-                articles, requests = await scrape_year_async(year, base_url)
+                # Define progress callback to save after each page
+                def save_page_progress(articles_dict):
+                    save_progress(articles_dict, sum(len(arts) for arts in articles_dict.values()))
+                
+                # Scrape year asynchronously with page-level progress saving
+                articles, requests, _ = await scrape_year_async(
+                    year, 
+                    base_url, 
+                    progress_callback=save_page_progress,
+                    articles_by_year=articles_by_year
+                )
                 
                 # Deduplicate by URL across all existing articles
                 existing_urls = set()
@@ -514,7 +535,7 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
                 print(f"✓ Total requests this session: {request_count}/{max_requests_per_session} ({remaining} remaining)")
                 print(f"✓ Total articles (all time): {total_articles}")
                 
-                # Save progress
+                # Save progress after every year completion
                 save_progress(articles_by_year, total_articles)
                 
             except KeyboardInterrupt:
