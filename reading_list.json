@@ -254,6 +254,22 @@
         "bibtex": "@article{m2004,\n  author = {M Hegarty},\n  title = {Mechanical reasoning by mental simulation},\n  year = {2004},\n  url = {https://www.sciencedirect.com/science/article/pii/S1364661304000051}\n}",
         "markdown": "**M Hegarty** (2004). [Mechanical reasoning by mental simulation](https://www.sciencedirect.com/science/article/pii/S1364661304000051)."
       }
+    },
+    {
+      "title": "Partial mental simulation explains fallacies in physical reasoning",
+      "authors": "I Bass",
+      "year": "2024",
+      "url": "https://scholar.google.com/scholar?q=I.Bass+Partial+mental+simulation+explains+fallacies+in+physical+reasoning",
+      "citations": "N/A",
+      "paywall": false,
+      "tags": [
+        "mental simulation",
+        "physical reasoning",
+        "fallacies"
+      ],
+      "notes": "Added via Google Scholar search",
+      "date_added": "2025-11-26",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=Bass+%22Partial+mental+simulation+explains+fallacies+in+physical+reasoning%22"
     }
   ]
 }
