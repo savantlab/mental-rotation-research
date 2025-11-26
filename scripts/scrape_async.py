@@ -299,20 +299,16 @@ async def scrape_year_async(year, base_url_template, max_pages=100, progress_cal
             pages_needed = max_pages
             print(f"Could not detect total results, using max pages: {max_pages}")
         
-        # Create tasks for remaining pages (starting from page 2)
-        tasks = []
-        for page in range(1, pages_needed):
-            start = page * 10
-            url = f"{base_url_template.format(year=year)}&start={start}"
-            task = scrape_single_page(session, url, page, rate_limiter)
-            tasks.append(task)
-        
         # Execute pages sequentially to save progress after each
         results = []
-        if tasks:
-            print(f"Scraping pages 2-{pages_needed} ({len(tasks)} pages)...")
-            for i, task in enumerate(tasks, start=2):
-                page_result = await task
+        if pages_needed > 1:
+            print(f"Scraping pages 2-{pages_needed} ({pages_needed - 1} pages)...")
+            for page in range(1, pages_needed):
+                start = page * 10
+                url = f"{base_url_template.format(year=year)}&start={start}"
+                
+                # Execute page scrape
+                page_result = await scrape_single_page(session, url, page, rate_limiter)
                 results.append(page_result)
                 
                 # Save progress after each page if callback provided
@@ -323,8 +319,7 @@ async def scrape_year_async(year, base_url_template, max_pages=100, progress_cal
                         current_articles.extend(r)
                     articles_by_year[year] = current_articles
                     progress_callback(articles_by_year)
-        else:
-            results = []
+                    print(f"  💾 Saved progress: {len(current_articles)} articles from {year} so far")
         
         # Flatten results (include first page articles)
         year_articles = first_page_articles[:]
