@@ -321,6 +321,25 @@
       "notes": "Classic paper on dissociation between perception and action systems",
       "date_added": "2025-11-25",
       "google_scholar_url": "https://scholar.google.com/scholar?q=Aglioti+%22Size-contrast+illusions+deceive+the+eye+but+not+the+hand%22"
+    },
+    {
+      "title": "The human imagination: the cognitive neuroscience of visual mental imagery",
+      "authors": "J Pearson",
+      "year": "2019",
+      "url": "https://www.nature.com/articles/s41583-019-0202-9",
+      "citations": 884,
+      "paywall": true,
+      "tags": [
+        "mental imagery",
+        "aphantasia",
+        "hyperphantasia",
+        "V1",
+        "default mode network",
+        "review"
+      ],
+      "notes": "Major review on visual mental imagery covering aphantasia to hyperphantasia. Shows imagery involves frontal to sensory areas overlapping with DMN.",
+      "date_added": "2025-11-25",
+      "google_scholar_url": "https://scholar.google.com/scholar?q=J.Pearson+%22The+human+imagination%3A+the+cognitive+neuroscience+of+visual+mental+imagery%22"
     }
   ]
 }
