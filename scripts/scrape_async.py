@@ -81,7 +81,7 @@ async def scrape_single_page(session, url, page_num, rate_limiter, extract_total
     
     # Acquire rate limiter and show delay
     delay_used = await rate_limiter.acquire()
-    print(f"  Page {page_num + 1}: waiting {delay_used}s...")
+    print(f"  Page {page_num + 1}: fetching (waited {delay_used}s)...")
     
     try:
         async with session.get(url, headers=headers, timeout=10) as response:
