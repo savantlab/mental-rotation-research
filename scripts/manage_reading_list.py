@@ -5,7 +5,10 @@ Manage reading list of articles to save.
 
 import json
 import sys
+import subprocess
+import asyncio
 from datetime import datetime
+from pathlib import Path
 
 
 READING_LIST_FILE = 'reading_list.json'
@@ -26,7 +29,7 @@ def save_reading_list(data):
         json.dump(data, f, indent=2)
 
 
-def add_article(title, authors, url, year=None, citations=None, tags=None, notes=None):
+def add_article(title, authors, url, year=None, citations=None, tags=None, notes=None, paywall=None, auto_download=True):
     """Add an article to the reading list."""
     data = load_reading_list()
     
@@ -42,6 +45,7 @@ def add_article(title, authors, url, year=None, citations=None, tags=None, notes
         'year': year or 'N/A',
         'url': url,
         'citations': citations or 0,
+        'paywall': paywall if paywall is not None else False,
         'tags': tags or [],
         'notes': notes or '',
         'date_added': datetime.now().strftime('%Y-%m-%d')
@@ -49,7 +53,27 @@ def add_article(title, authors, url, year=None, citations=None, tags=None, notes
     
     data['reading_list'].append(article)
     save_reading_list(data)
-    print(f"Added to reading list: {title}")
+    print(f"✓ Added to reading list: {title}")
+    
+    # Auto-download the new paper
+    if auto_download:
+        print("\n" + "="*70)
+        print("AUTO-DOWNLOADING NEW PAPER")
+        print("="*70)
+        try:
+            result = subprocess.run(
+                ['python3', 'scripts/scrape_reading_list.py'],
+                cwd=Path.cwd(),
+                capture_output=False,
+                text=True
+            )
+            if result.returncode == 0:
+                print("\n✓ Download attempt completed")
+            else:
+                print(f"\n⚠ Download script exited with code {result.returncode}")
+        except Exception as e:
+            print(f"\n⚠ Could not auto-download: {e}")
+            print("Run manually: python3 scripts/scrape_reading_list.py")
 
 
 def list_articles(tag_filter=None):
