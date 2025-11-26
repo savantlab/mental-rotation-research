@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Async version of Google Scholar scraper with concurrent requests.
+Async version of Google Scholar scraper with rate-limited requests.
 Makes scraping significantly faster while respecting rate limits.
 """
 
