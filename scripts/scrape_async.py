@@ -86,8 +86,9 @@ async def scrape_single_page(session, url, page_num, rate_limiter, extract_total
     try:
         async with session.get(url, headers=headers, timeout=10) as response:
             if response.status == 429:
-                print(f"    Page {page_num + 1}: Rate limited!")
-                return articles
+                print(f"\n❌ RATE LIMITED (HTTP 429) on page {page_num + 1}")
+                print(f"   Stopping scraper to avoid further rate limiting...")
+                raise Exception("Rate limited - stopping scraper")
             
             response.raise_for_status()
             html = await response.text()
@@ -579,8 +580,15 @@ async def scrape_continuous_async(start_year=1970, end_year=2025, max_requests_p
                 save_final_results(articles_by_year, total_articles)
                 return
             except Exception as e:
-                print(f"\nError processing year {year}: {e}")
-                continue
+                error_msg = str(e)
+                if "Rate limited" in error_msg or "429" in error_msg:
+                    print(f"\n\n❌ RATE LIMITED - Stopping session")
+                    print(f"   Saving progress and initiating {SESSION_BREAK_HOURS}-hour break...")
+                    save_progress(articles_by_year, total_articles)
+                    break  # Exit to session break
+                else:
+                    print(f"\n⚠ Error processing range {year_range}: {e}")
+                    continue
         
         # Check if done
         if not ranges_to_scrape:
