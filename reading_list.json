@@ -340,6 +340,24 @@
       "notes": "Major review on visual mental imagery covering aphantasia to hyperphantasia. Shows imagery involves frontal to sensory areas overlapping with DMN.",
       "date_added": "2025-11-25",
       "google_scholar_url": "https://scholar.google.com/scholar?q=J.Pearson+%22The+human+imagination%3A+the+cognitive+neuroscience+of+visual+mental+imagery%22"
+    },
+    {
+      "title": "Statistics of mental imagery",
+      "authors": "F Galton",
+      "year": "1880",
+      "url": "https://www.jstor.org/stable/2342149",
+      "citations": 3000,
+      "paywall": true,
+      "tags": [
+        "classic",
+        "foundational",
+        "mental-imagery",
+        "historical paper",
+        "individual differences",
+        "aphantasia precursor"
+      ],
+      "notes": "Foundational 1880 paper by Francis Galton introducing systematic study of individual differences in mental imagery. First to document that some people lack visual imagery (aphantasia precursor). Pioneered questionnaire-based assessment of imagery vividness. Highly influential in establishing mental imagery as legitimate area of scientific inquiry.",
+      "date_added": "2025-11-27"
     }
   ]
 }

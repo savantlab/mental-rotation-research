@@ -1,0 +1,25 @@
+include README.md
+include LICENSE
+include requirements.txt
+include CRON_SETUP.md
+
+# Include scripts
+recursive-include scripts *.py
+recursive-include scripts *.sh
+
+# Include notebooks
+recursive-include notebooks *.ipynb
+
+# Include examples
+recursive-include examples *.py
+
+# Include reading list
+include reading_list.json
+
+# Exclude data and cache files
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude .DS_Store
+prune data
+prune venv
+prune .git
