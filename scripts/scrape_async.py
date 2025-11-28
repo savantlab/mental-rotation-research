@@ -57,7 +57,7 @@ class RateLimiter:
         self.semaphore.release()
 
 
-async def scrape_single_page(session, url, page_num, rate_limiter, extract_total=False):
+async def scrape_single_page(session, url, page_num, rate_limiter, extract_total=False, save_html=True, year_range=None):
     """
     Scrape a single page asynchronously.
     
@@ -67,6 +67,8 @@ async def scrape_single_page(session, url, page_num, rate_limiter, extract_total
         page_num: Page number (0-indexed)
         rate_limiter: RateLimiter instance
         extract_total: If True, also extract total results count from page
+        save_html: If True, save raw HTML to archive
+        year_range: Tuple of (start_year, end_year) for filename
         
     Returns:
         List of article dictionaries, or tuple of (articles, total_results) if extract_total=True
@@ -92,6 +94,24 @@ async def scrape_single_page(session, url, page_num, rate_limiter, extract_total
             
             response.raise_for_status()
             html = await response.text()
+            
+            # Save raw HTML if requested
+            if save_html:
+                html_dir = 'data/scholar_html'
+                os.makedirs(html_dir, exist_ok=True)
+                
+                if year_range:
+                    year_label = f"{year_range[0]}-{year_range[1]}" if isinstance(year_range, tuple) else str(year_range)
+                else:
+                    year_label = "unknown"
+                
+                timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                filename = f"{html_dir}/scholar_{year_label}_p{page_num+1}_{timestamp}.html"
+                
+                with open(filename, 'w', encoding='utf-8') as f:
+                    f.write(html)
+                
+                print(f"  📄 Saved HTML: {filename}")
             
             soup = BeautifulSoup(html, 'html.parser')
             
@@ -297,7 +317,7 @@ async def scrape_year_async(year_range, base_url_template, max_pages=100, progre
     async with aiohttp.ClientSession() as session:
         # First, scrape page 1 and extract total results
         first_url = base_url_template.format(year_start=year_start, year_end=year_end)
-        first_page_articles, total_results = await scrape_single_page(session, first_url, 0, rate_limiter, extract_total=True)
+        first_page_articles, total_results = await scrape_single_page(session, first_url, 0, rate_limiter, extract_total=True, save_html=True, year_range=year_range)
         
         if total_results:
             # Calculate actual pages needed (Google Scholar limit: 999 results = 100 pages max)
@@ -317,7 +337,7 @@ async def scrape_year_async(year_range, base_url_template, max_pages=100, progre
                 url = f"{base_url_template.format(year_start=year_start, year_end=year_end)}&start={start}"
                 
                 # Execute page scrape
-                page_result = await scrape_single_page(session, url, page, rate_limiter)
+                page_result = await scrape_single_page(session, url, page, rate_limiter, save_html=True, year_range=year_range)
                 results.append(page_result)
                 
                 # Save progress after each page if callback provided

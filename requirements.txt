@@ -7,3 +7,8 @@ jupyter
 requests
 beautifulsoup4
 aiohttp
+
+# ML Pipeline
+d6tflow>=0.2.8
+scikit-learn>=1.3.0
+pyarrow>=14.0.0

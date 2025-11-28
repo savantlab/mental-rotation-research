@@ -358,6 +358,25 @@
       ],
       "notes": "Foundational 1880 paper by Francis Galton introducing systematic study of individual differences in mental imagery. First to document that some people lack visual imagery (aphantasia precursor). Pioneered questionnaire-based assessment of imagery vividness. Highly influential in establishing mental imagery as legitimate area of scientific inquiry.",
       "date_added": "2025-11-27"
+    },
+    {
+      "title": "Composite Portraits, Made by Combining Those of Many Different Persons Into a Single Resultant Figure",
+      "authors": "F Galton",
+      "year": "1878",
+      "url": "https://www.nature.com/articles/018097a0",
+      "citations": 1500,
+      "paywall": false,
+      "tags": [
+        "classic",
+        "foundational",
+        "historical paper",
+        "composite portraits",
+        "face perception",
+        "visual averaging",
+        "mental representation"
+      ],
+      "notes": "Galton's 1878 paper on composite photography - pioneering work on visual averaging and mental representation. Developed technique of combining multiple photographs into composite images. Foundational for understanding how the mind forms prototypes and averages visual information. Predates his mental imagery work and influenced theories of mental representation. Important for understanding mental rotation as manipulation of internal representations.",
+      "date_added": "2025-11-27"
     }
   ]
 }

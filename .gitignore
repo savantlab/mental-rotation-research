@@ -16,6 +16,7 @@ build/
 data/*.csv
 data/*.json
 data/*.html
+data/scholar_html/
 
 # Keep structure files
 !data/.gitkeep
