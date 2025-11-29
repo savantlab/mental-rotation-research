@@ -454,6 +454,25 @@
       ],
       "notes": "Hinton & Parsons' 1981 chapter on frames of reference in mental imagery from Attention and Performance IX. Important contribution to understanding how spatial mental representations use different reference frames. Relevant to mental rotation as rotation involves transforming spatial representations across reference frames.",
       "date_added": "2025-11-28"
+    },
+    {
+      "title": "Disambiguation of mental rotation by spatial frames of reference",
+      "authors": "N Asakura, T Inui",
+      "year": "2011",
+      "url": "https://journals.sagepub.com/doi/10.1068/i0450aap",
+      "citations": 16,
+      "paywall": true,
+      "tags": [
+        "frames of reference",
+        "mental rotation",
+        "spatial cognition",
+        "Bayesian framework",
+        "object rotation",
+        "vertical axis",
+        "object-intrinsic axis"
+      ],
+      "notes": "Asakura & Inui 2011 paper showing spatial reference frames actively disambiguate object rotations when rotational axis is ambiguous. Demonstrates vertical environmental axis is preferentially used over object-intrinsic axis for efficient minimum rotation. When vertical axis absent, object-intrinsic axis resolves rotation ambiguity. Suggests reference frames are incorporated into internal model of object rotations within Bayesian framework for motion perception. Published in i-Perception.",
+      "date_added": "2025-11-29"
     }
   ]
 }
