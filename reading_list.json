@@ -573,6 +573,26 @@
       ],
       "notes": "Pegna et al. 1997 ERP study using spatiotemporal analysis to elucidate topography and chronology of mental rotation. Found one time segment (400-600ms) that increased in duration with rotation angle, suggesting this is when mental rotation occurs. Inverse solution showed right-lateralized occipito-parietal activity. Important for understanding temporal dynamics and neural substrates of mental rotation beyond what static imaging can reveal. Published in Human Brain Mapping.",
       "date_added": "2025-11-29"
+    },
+    {
+      "title": "Motor processes in mental rotation",
+      "authors": "M Wexler, SM Kosslyn, A Berthoz",
+      "year": "1998",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0010027798000328",
+      "citations": 835,
+      "paywall": true,
+      "tags": [
+        "mental rotation",
+        "motor processes",
+        "embodied cognition",
+        "dual-task paradigm",
+        "motor interference",
+        "visuomotor anticipation",
+        "sensorimotor integration",
+        "motor imagery"
+      ],
+      "notes": "Wexler, Kosslyn & Berthoz 1998 landmark study showing mental rotation relies on motor processes. Used dual-task paradigm where subjects performed mental rotation while executing unseen motor rotation. Found compatible motor rotation speeds mental rotation while incompatible directions interfere. Correlation between mental and motor rotation angles only when directions compatible. Motor rotation modifies inverted V-shaped RT function. Direct evidence that mental image transformations are guided by motor processes even for abstract objects. Published in Cognition.",
+      "date_added": "2025-11-29"
     }
   ]
 }
