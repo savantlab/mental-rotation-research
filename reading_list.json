@@ -616,6 +616,28 @@
       ],
       "notes": "Ganis et al. 2000 TMS study demonstrating causal role of primary motor cortex in mental rotation. Single-pulse TMS to left M1 hand area slowed RTs when delivered at 650ms (but not 400ms) after stimulus onset. Effect was larger for hands than feet, showing stimulus-specificity. Demonstrates: (i) left primary motor cortex has causal role in mental rotation of hands; (ii) role is stimulus-specific; (iii) M1 involved relatively late in rotation process. Published in Cerebral Cortex.",
       "date_added": "2025-11-29"
+    },
+    {
+      "title": "Sex differences in mental rotation tasks: Not just in the mental rotation process!",
+      "authors": "AP Boone, M Hegarty",
+      "year": "2017",
+      "url": "https://psycnet.apa.org/record/2017-14417-001",
+      "citations": 215,
+      "paywall": true,
+      "tags": [
+        "sex differences",
+        "mental rotation",
+        "gender differences",
+        "strategy use",
+        "structure foils",
+        "mirror foils",
+        "Vandenberg and Kuse",
+        "Shepard and Metzler",
+        "spatial ability",
+        "individual differences"
+      ],
+      "notes": "Boone & Hegarty 2017 study showing mental rotation process is not the only source of sex differences in mental rotation tasks. Found male advantage persists even when all foils were structure foils (no rotation necessary), but disappeared when participants instructed to look for structure foils. Both sexes showed greater accuracy and faster RTs for structurally different vs mirror foils. Results demonstrate alternative strategy use is another source of sex differences beyond the rotation process itself. Published in JEP: Learning, Memory, and Cognition.",
+      "date_added": "2025-11-29"
     }
   ]
 }
