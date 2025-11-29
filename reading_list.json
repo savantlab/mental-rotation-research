@@ -531,6 +531,27 @@
       ],
       "notes": "Pikas 1966 book on abstraction and concept formation through lens of psychological frames of reference. Early comprehensive treatment of how frames of reference shape concept formation and abstraction processes. Historical importance for understanding theoretical foundations of reference frames in cognitive psychology. Relevant to mental rotation as abstract spatial transformations require concepts organized within reference frames. Published by De Gruyter.",
       "date_added": "2025-11-29"
+    },
+    {
+      "title": "Knowledge across reference frames: Cognitive maps and image spaces",
+      "authors": "R Bottini, CF Doeller",
+      "year": "2020",
+      "url": "https://www.cell.com/trends/cognitive-sciences/fulltext/S1364-6613(20)30033-6",
+      "citations": 166,
+      "paywall": true,
+      "tags": [
+        "cognitive maps",
+        "reference frames",
+        "image spaces",
+        "hippocampus",
+        "parietal cortex",
+        "world-centered",
+        "self-centered",
+        "spatial representation",
+        "conceptual knowledge"
+      ],
+      "notes": "Bottini & Doeller 2020 review on how conceptual knowledge is organized according to spatial geometries across multiple reference frames. Distinguishes cognitive maps (hippocampal, world-centered) from image spaces (parietal, self-centered). Proposes hippocampal-parietal network accounting for organization and retrieval of knowledge across reference frames. Suggests both may be manifestations of mind's propensity to create low-dimensional internal models. Direct relevance to mental rotation as it involves transforming between reference frames. Published in Trends in Cognitive Sciences.",
+      "date_added": "2025-11-29"
     }
   ]
 }
