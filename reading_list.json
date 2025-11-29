@@ -552,6 +552,27 @@
       ],
       "notes": "Bottini & Doeller 2020 review on how conceptual knowledge is organized according to spatial geometries across multiple reference frames. Distinguishes cognitive maps (hippocampal, world-centered) from image spaces (parietal, self-centered). Proposes hippocampal-parietal network accounting for organization and retrieval of knowledge across reference frames. Suggests both may be manifestations of mind's propensity to create low-dimensional internal models. Direct relevance to mental rotation as it involves transforming between reference frames. Published in Trends in Cognitive Sciences.",
       "date_added": "2025-11-29"
+    },
+    {
+      "title": "Unraveling the cerebral dynamics of mental imagery",
+      "authors": "AJ Pegna, A Khateb, L Spinelli, M Seeck, T Landis, CM Michel",
+      "year": "1997",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/(SICI)1097-0193(1997)5:6%3C410::AID-HBM2%3E3.0.CO;2-6",
+      "citations": 134,
+      "paywall": true,
+      "tags": [
+        "mental rotation",
+        "ERP",
+        "event-related potentials",
+        "spatiotemporal analysis",
+        "cerebral dynamics",
+        "occipito-parietal",
+        "right hemisphere",
+        "neuroimaging",
+        "temporal dynamics"
+      ],
+      "notes": "Pegna et al. 1997 ERP study using spatiotemporal analysis to elucidate topography and chronology of mental rotation. Found one time segment (400-600ms) that increased in duration with rotation angle, suggesting this is when mental rotation occurs. Inverse solution showed right-lateralized occipito-parietal activity. Important for understanding temporal dynamics and neural substrates of mental rotation beyond what static imaging can reveal. Published in Human Brain Mapping.",
+      "date_added": "2025-11-29"
     }
   ]
 }
