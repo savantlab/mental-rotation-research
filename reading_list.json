@@ -473,6 +473,45 @@
       ],
       "notes": "Asakura & Inui 2011 paper showing spatial reference frames actively disambiguate object rotations when rotational axis is ambiguous. Demonstrates vertical environmental axis is preferentially used over object-intrinsic axis for efficient minimum rotation. When vertical axis absent, object-intrinsic axis resolves rotation ambiguity. Suggests reference frames are incorporated into internal model of object rotations within Bayesian framework for motion perception. Published in i-Perception.",
       "date_added": "2025-11-29"
+    },
+    {
+      "title": "Mental imagery: In search of a theory",
+      "authors": "ZW Pylyshyn",
+      "year": "2002",
+      "url": "https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/mental-imagery-in-search-of-a-theory/E109910FA7D622252A50BEC2244FD2CD",
+      "citations": 800,
+      "paywall": false,
+      "tags": [
+        "mental imagery",
+        "imagery debate",
+        "picture theory",
+        "theoretical critique",
+        "Pylyshyn",
+        "depictive representation",
+        "spatial representation",
+        "cognitive penetrability"
+      ],
+      "notes": "Pylyshyn's 2002 critique of picture theories of mental imagery, particularly Kosslyn's theory. Argues against the idea that mental images are depictive/spatial representations in a 'visual buffer' examined by a 'mind's eye'. Major contribution to the imagery debate, questioning whether neuroscience evidence supports picture theory. Challenges claims about spatial properties of images and cognitive impenetrability of imagery processes. Published in Behavioral and Brain Sciences with extensive peer commentary.",
+      "date_added": "2025-11-29"
+    }
+    {
+      "title": "Paradoxical thinking and change in the frames of reference",
+      "authors": "A Westenholz",
+      "year": "1993",
+      "url": "https://journals.sagepub.com/doi/10.1177/017084069301400104",
+      "citations": 200,
+      "paywall": true,
+      "tags": [
+        "frames of reference",
+        "paradoxical thinking",
+        "organizational change",
+        "mental frames",
+        "cognitive restructuring",
+        "deframing",
+        "social construction"
+      ],
+      "notes": "Westenholz 1993 paper on how paradoxical situations cause 'deframing' of mental frames of reference. Describes how employees experience paradoxical situations that render previous frames meaningless, forcing engagement with new, unknown levels of thinking. Shows how discovering that categories are socially constructed enables new ways of understanding environment. Relevant to mental rotation as it involves changing frames of reference and cognitive restructuring. Published in Organization Studies.",
+      "date_added": "2025-11-29"
     }
   ]
 }
