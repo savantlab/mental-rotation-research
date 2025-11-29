@@ -593,6 +593,29 @@
       ],
       "notes": "Wexler, Kosslyn & Berthoz 1998 landmark study showing mental rotation relies on motor processes. Used dual-task paradigm where subjects performed mental rotation while executing unseen motor rotation. Found compatible motor rotation speeds mental rotation while incompatible directions interfere. Correlation between mental and motor rotation angles only when directions compatible. Motor rotation modifies inverted V-shaped RT function. Direct evidence that mental image transformations are guided by motor processes even for abstract objects. Published in Cognition.",
       "date_added": "2025-11-29"
+    },
+    {
+      "title": "Transcranial magnetic stimulation of primary motor cortex affects mental rotation",
+      "authors": "G Ganis, JP Keenan, SM Kosslyn, A Pascual-Leone",
+      "year": "2000",
+      "url": "https://academic.oup.com/cercor/article/10/2/175/318790",
+      "citations": 445,
+      "paywall": true,
+      "tags": [
+        "TMS",
+        "transcranial magnetic stimulation",
+        "primary motor cortex",
+        "mental rotation",
+        "motor cortex",
+        "causal role",
+        "hands",
+        "feet",
+        "stimulus-specific",
+        "neuroimaging",
+        "motor structures"
+      ],
+      "notes": "Ganis et al. 2000 TMS study demonstrating causal role of primary motor cortex in mental rotation. Single-pulse TMS to left M1 hand area slowed RTs when delivered at 650ms (but not 400ms) after stimulus onset. Effect was larger for hands than feet, showing stimulus-specificity. Demonstrates: (i) left primary motor cortex has causal role in mental rotation of hands; (ii) role is stimulus-specific; (iii) M1 involved relatively late in rotation process. Published in Cerebral Cortex.",
+      "date_added": "2025-11-29"
     }
   ]
 }
