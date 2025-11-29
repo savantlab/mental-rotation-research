@@ -377,6 +377,26 @@
       ],
       "notes": "Galton's 1878 paper on composite photography - pioneering work on visual averaging and mental representation. Developed technique of combining multiple photographs into composite images. Foundational for understanding how the mind forms prototypes and averages visual information. Predates his mental imagery work and influenced theories of mental representation. Important for understanding mental rotation as manipulation of internal representations.",
       "date_added": "2025-11-27"
+    },
+    {
+      "title": "Physics versus graphics as an organizing dichotomy in cognition",
+      "authors": "H Balaban, TD Ullman",
+      "year": "2025",
+      "url": "https://www.cell.com/trends/cognitive-sciences/fulltext/S1364-6613(24)00292-X",
+      "citations": 6,
+      "paywall": true,
+      "tags": [
+        "mental simulation",
+        "physics vs graphics",
+        "aphantasia",
+        "visual streams",
+        "object tracking",
+        "theoretical",
+        "world models",
+        "cognitive architecture"
+      ],
+      "notes": "Major theoretical paper arguing intuitive mental simulation includes basic split between physical simulation and graphical rendering. Based on split in engineered systems (physics engines vs graphics rendering). Uses physics/graphics distinction to explain findings across domains including aphantasia, imagery, visual streams, and object tracking. Proposes natural division of labor in cognitive systems. Published in Trends in Cognitive Sciences 2025.",
+      "date_added": "2025-11-28"
     }
   ]
 }
