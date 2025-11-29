@@ -437,6 +437,23 @@
       ],
       "notes": "Historical analysis of Pierre Janet's 1889 doctoral dissertation L'Automatisme psychologique. Argues Janet bridged old spiritualistic psychology (claiming unity of self) with new psychology (questioning it). Shows Janet used pathological psychology to preserve philosophical concept of self while establishing scientific psychology. Important for understanding historical development of concepts like dissociation, automaticity, and modularity of mind that underpin modern theories of mental imagery and mental rotation.",
       "date_added": "2025-11-28"
+    },
+    {
+      "title": "Frames of reference and mental imagery",
+      "authors": "GE Hinton, LM Parsons",
+      "year": "1981",
+      "url": "https://www.cs.toronto.edu/~hinton/absps/frmref81.pdf",
+      "citations": 152,
+      "paywall": false,
+      "tags": [
+        "mental imagery",
+        "frames of reference",
+        "spatial cognition",
+        "classic",
+        "Hinton"
+      ],
+      "notes": "Hinton & Parsons' 1981 chapter on frames of reference in mental imagery from Attention and Performance IX. Important contribution to understanding how spatial mental representations use different reference frames. Relevant to mental rotation as rotation involves transforming spatial representations across reference frames.",
+      "date_added": "2025-11-28"
     }
   ]
 }
