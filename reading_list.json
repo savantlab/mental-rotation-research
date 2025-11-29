@@ -493,7 +493,7 @@
       ],
       "notes": "Pylyshyn's 2002 critique of picture theories of mental imagery, particularly Kosslyn's theory. Argues against the idea that mental images are depictive/spatial representations in a 'visual buffer' examined by a 'mind's eye'. Major contribution to the imagery debate, questioning whether neuroscience evidence supports picture theory. Challenges claims about spatial properties of images and cognitive impenetrability of imagery processes. Published in Behavioral and Brain Sciences with extensive peer commentary.",
       "date_added": "2025-11-29"
-    }
+    },
     {
       "title": "Paradoxical thinking and change in the frames of reference",
       "authors": "A Westenholz",
@@ -511,6 +511,25 @@
         "social construction"
       ],
       "notes": "Westenholz 1993 paper on how paradoxical situations cause 'deframing' of mental frames of reference. Describes how employees experience paradoxical situations that render previous frames meaningless, forcing engagement with new, unknown levels of thinking. Shows how discovering that categories are socially constructed enables new ways of understanding environment. Relevant to mental rotation as it involves changing frames of reference and cognitive restructuring. Published in Organization Studies.",
+      "date_added": "2025-11-29"
+    },
+    {
+      "title": "Abstraction and concept formation: An interpretative investigation into a group of psychological frames of reference",
+      "authors": "A Pikas",
+      "year": "1966",
+      "url": "https://brill.com/view/title/7976",
+      "citations": 84,
+      "paywall": true,
+      "tags": [
+        "abstraction",
+        "concept formation",
+        "frames of reference",
+        "psychological theory",
+        "historical",
+        "theoretical foundations",
+        "cognitive psychology"
+      ],
+      "notes": "Pikas 1966 book on abstraction and concept formation through lens of psychological frames of reference. Early comprehensive treatment of how frames of reference shape concept formation and abstraction processes. Historical importance for understanding theoretical foundations of reference frames in cognitive psychology. Relevant to mental rotation as abstract spatial transformations require concepts organized within reference frames. Published by De Gruyter.",
       "date_added": "2025-11-29"
     }
   ]
