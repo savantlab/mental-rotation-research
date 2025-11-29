@@ -397,6 +397,46 @@
       ],
       "notes": "Major theoretical paper arguing intuitive mental simulation includes basic split between physical simulation and graphical rendering. Based on split in engineered systems (physics engines vs graphics rendering). Uses physics/graphics distinction to explain findings across domains including aphantasia, imagery, visual streams, and object tracking. Proposes natural division of labor in cognitive systems. Published in Trends in Cognitive Sciences 2025.",
       "date_added": "2025-11-28"
+    },
+    {
+      "title": "The dissociation theory of Pierre Janet",
+      "authors": "E Hilgard",
+      "year": "1957",
+      "url": "https://psycnet.apa.org/record/1958-02307-001",
+      "citations": 800,
+      "paywall": false,
+      "tags": [
+        "dissociation theory",
+        "Pierre Janet",
+        "historical paper",
+        "consciousness",
+        "psychological theory",
+        "classic",
+        "modularity",
+        "automaticity"
+      ],
+      "notes": "Hilgard's 1957 review of Pierre Janet's dissociation theory. Janet (1889-1907) proposed that mental phenomena could become dissociated from conscious awareness. Foundational for understanding divided consciousness and psychological automaticity. Relevant to mental imagery and mental rotation as dissociable cognitive processes that can occur outside focal awareness. Historical importance for understanding modularity of mental processes.",
+      "date_added": "2025-11-28"
+    },
+    {
+      "title": "How Pierre Janet used pathological psychology to save the philosophical self",
+      "authors": "J Carroy, R Plas",
+      "year": "2000",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/1520-6696(200021)36:1%3C1::AID-JHBS1%3E3.0.CO;2-0",
+      "citations": 150,
+      "paywall": true,
+      "tags": [
+        "Pierre Janet",
+        "history of psychology",
+        "philosophy of mind",
+        "pathological psychology",
+        "psychological automatism",
+        "spiritualistic psychology",
+        "unity of self",
+        "L'Automatisme psychologique"
+      ],
+      "notes": "Historical analysis of Pierre Janet's 1889 doctoral dissertation L'Automatisme psychologique. Argues Janet bridged old spiritualistic psychology (claiming unity of self) with new psychology (questioning it). Shows Janet used pathological psychology to preserve philosophical concept of self while establishing scientific psychology. Important for understanding historical development of concepts like dissociation, automaticity, and modularity of mind that underpin modern theories of mental imagery and mental rotation.",
+      "date_added": "2025-11-28"
     }
   ]
 }
